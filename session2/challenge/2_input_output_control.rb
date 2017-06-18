@@ -24,13 +24,13 @@ end
 
 def hi_hi_goodbye
   prompt
-  while (input = gets) && (line !~ /bye/)
+  while (input = gets) && (input !~ /bye/)
     input.to_i.times { print "hi " }
     puts
     prompt
   end
   puts "Goodbye!"
-end 
+end
 
 # This will just invoke the method if you run this program directly
 # This way you can try it out by running "$ ruby 2_input_output_control.rb"
