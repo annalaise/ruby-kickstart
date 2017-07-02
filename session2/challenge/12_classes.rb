@@ -21,8 +21,34 @@
 # f.to_f               # => 0.5
 
 class Fraction
-  def gcd(a,b)
-    return a if b == 0
-    gcd(b, a%b)
+  # Sets methods (as symbols) for these values
+  attr_accessor :numerator, :denominator
+
+  # Initializes values as those passed as arguments, sets them using self and parallel assignment
+  def initialize(numerator, denominator)
+    self.numerator, self.denominator = numerator, denominator
   end
+
+# repesents the fraction as a string
+  def to_s
+    "#{numerator}/#{denominator}"
+  end
+
+# divides numerator by denominator and converts to a float
+  def to_f
+    numerator / denominator.to_f
+  end
+
+# takes two values, returns greatest common diviser
+  def gcd(a,b)
+    return a if b == 0 # returns numerator if denominator is 0
+    gcd(b, a%b) # recursion.
+  end
+
+# uses gcd method to find lowest common divisor, recursively creates lowest fraction of num. and dom. values
+  def lowest
+    divisor = gcd(numerator, denominator)
+    Fraction.new(numerator/divisor, denominator/divisor)
+  end
+
 end
